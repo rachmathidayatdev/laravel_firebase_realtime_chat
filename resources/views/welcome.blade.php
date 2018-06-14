@@ -68,20 +68,30 @@
     <body>
         <div class="flex-center position-ref full-height">
             <div class="content">
-                <h1>Coba</h1>
-                <form>
-                    <div class="form-group">
-                        <label for="exampleInputEmail1">Name</label>
-                        <input type="text" class="form-control" name="name" id="name">
-                    </div>
-                    <button type="button" class="btn btn-info" onClick="submitData()">Submit</button>
-                </form>
-            </div>
-        </div>
-        <div class="container">
-            <h1>Hasil Post Data Firebase</h1>
-            <div id="result">
+                <div class="col-sm-12">
+                    <h1>Coba</h1>
+                    <form>
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">Name</label>
+                            <input type="text" class="form-control" name="name" id="name">
+                        </div>
+                        <button type="button" class="btn btn-info" onClick="submitData()">Submit</button>
+                    </form>
+                </div>
+                <div class="col-sm-12">
+                    <div class="container" style="margin-bottom: 100px">
+                        <h1>Hasil Post Data Firebase</h1>
+                        <table class="table table-bordered">
+                            <thead>
+                                <th>Name</th>
+                                <th>Action</th>
+                            </thead>
+                            <tbody id="result">
 
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
             </div>
         </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
@@ -109,7 +119,10 @@
                 snapshot.forEach(function(item){
 //                    console.log(JSON.stringify(item.val()))
                     result.append(
-                        `<label class="form-control">`+item.val().name+`</label><button class="btn btn-success" title_id="`+item.val().id+`" title_key="`+item.key+`" onClick\=\deleteData(event)\>Delete</button></br>`
+                        `<tr>
+                            <td>`+item.val().name+`</td>
+                            <td><button class="btn btn-success" title_id="`+item.val().id+`" title_key="`+item.key+`" onClick\=\deleteData(event)\>Delete</button></td>
+                        </tr>`
                     );
                 })
             }else{
